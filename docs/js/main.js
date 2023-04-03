@@ -25,7 +25,6 @@ var clockColorFill = [125/2,125/2,125/2];
 var pointColor     = clockColorFill;
 
 
-
 // global variables
 let fRate             = 20;
 let ratioStrokeCircle = 40;
@@ -176,24 +175,25 @@ function setup() {
     gui4x = gui3x + guiLength + guiPadding;
     gui5x = gui4x + guiLength + guiPadding;
 
-    gui1 = createGui('Diameter in pixels').setPosition(gui1x ,guiPadding );;
+    gui1 = createGui('Clock Diameter (pixels)').setPosition(gui1x ,guiPadding );;
     gui1.addGlobals('d');
 
-    gui2 = createGui('Seconds Hand').setPosition(gui2x,guiPadding );;
+    gui2 = createGui('Seconds Hand Motion').setPosition(gui2x,guiPadding );;
     gui2.addGlobals('secSmooth');
             
-    gui3 = createGui('Speed in Frames/s').setPosition(gui3x, guiPadding );
+    gui3 = createGui('Hands Speed (frames/s)').setPosition(gui3x, guiPadding );
     gui3.addGlobals('stopFrames');
 
-    gui4 = createGui('Fill Color').setPosition(gui4x, guiPadding );
+    gui4 = createGui('Clock Color').setPosition(gui4x, guiPadding );
     gui4.addGlobals('clockColorFill');
 
     gui5 = createGui('Hands Color').setPosition(gui5x, guiPadding );
     gui5.addGlobals('handsColor');
-
+    
+    screenMode();
     resizeArray('screen');
     listenDiameterSlider();
-    screenMode()
+    
 
     // active ruler for measures
     // let utils = new p5.Utils();
@@ -230,17 +230,7 @@ function draw() {
           
 
            // the remCycle is used as a loop counter. The frameCount variable stores the number of frames since 
-           // the setup() function was executed. The secuence is 1,2,...frameRate-1,0,1,2,...frameRate-1,0,1,2...
-           // is the remainder of frameCount%frameRate eg: if frameRate is 4 remCycle is:
-           //  frameCount:1  --> remCycle:1
-           //  frameCount:2  --> remCycle:2
-           //  frameCount:3  --> remCycle:3
-           //  frameCount:4  --> remCycle:0
-           //  frameCount:5  --> remCycle:1
-           //  frameCount:6  --> remCycle:2
-           //  frameCount:7  --> remCycle:3
-           //  frameCount:8  --> remCycle:0
-           //  frameCount:9  --> remCycle:1
+           // the setup() function was executed. The secuence is 1,2,...frameRate-1,0.
            
            remCycle = frameCount%fRate;
            // sumCicle stores de time fron remCycle 1...0
@@ -248,7 +238,7 @@ function draw() {
             
            // calcAngles and plot initial hands angles frames
            if(remCycle == 1){
-            
+
               updateDate()
 
               //  for display in console times
@@ -354,4 +344,6 @@ function draw() {
            plotClockVector(x0_6, y0) 
                
 };
+
+
 

@@ -7,6 +7,12 @@ var dMin = 10;
 var dMax = 200;
 var dStep = 1;
 
+// secSmooth
+var secSmooth     = 0;
+var secSmoothMin  = 0;
+var secSmoothMax  = 1;
+var secSmoothStep = 1;
+
 // stopFrames
 var stopFrames     = 5;
 var stopFramesMin  = 1;
@@ -265,8 +271,8 @@ function draw() {
 
            for(let i=0;i<=2*nRows*nCols-1;i++){
            
-            hand1_i = data[i].hand1_i;
-            hand2_i = data[i].hand2_i
+              hand1_i = data[i].hand1_i;
+              hand2_i = data[i].hand2_i
             
               strokeWeight(d / ratioStrokeLine); 
               
@@ -282,9 +288,26 @@ function draw() {
               
               push()
               strokeWeight(5)
-              textSize(14);textAlign(CENTER, CENTER);
+              textSize(20);textAlign(CENTER, CENTER);
+              
+              var pos = data[i].handsPosition_i;
+              if(pos==1 || pos==3 || pos==4){
+                 var kx = -d/3
+                 var ky = 0;
+              }else if(pos==5 || pos==6){
+                 var kx = d/3
+                 var ky = 0;
+              }else if(pos==2){
 
-              text(`${data[i].handsPosition_i}`,data[i].xc,data[i].yc)
+                 var kx = 0;
+                 var ky = -d/3;
+
+              }else{
+                 var kx  = -d/4;
+                 var ky  = -d/4;
+              };
+
+              text(`${data[i].handsPosition_i}`,data[i].xc+kx,data[i].yc+ky)
               
               var kd = 0.7;
               var x = data[i].xc + kd*handsLength*cos(hand1_i);                

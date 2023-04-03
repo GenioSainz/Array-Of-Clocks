@@ -49,17 +49,22 @@ function screenMode(){
       var bool2 = windowHeight>=windowWidth;
 
       if(bool1 || bool2){
+        
         noLoop();
+        clear();
         var img     = document.createElement('img');
             img.src = "imgs/mobileLandscape.png";
             img.setAttribute('width', '200px');
-
+      
       setTimeout(()=>{
+                      
+                      noLoop();
                       clear()
                       swal({title:'Please, put your device in landscape mode to start!',
                             content: img,
 
                       }).then((value) => {
+                        noLoop();
                         clear()
                       });
 
@@ -127,10 +132,10 @@ function calcAngles(x0,y0,ni,ne){
         let xc = x0 + d/2 + j*d;
         let yc = y0 + d/2 + i*d;
         
+        // go to the next clock
         indx += 1;
         
         // update data
-
         data.push({hand1_i,hand1_e,hand1_delta,hand2_i,hand2_e,hand2_delta,xc,yc,handsPosition_i,handsPosition_e});
 
     };
@@ -335,7 +340,7 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   
   // detect screen mode
-  screenMode()
+  screenMode();
   
   // gui reposition when screen size changes
   // central gui
