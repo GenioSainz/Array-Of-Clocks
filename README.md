@@ -1,16 +1,17 @@
 # Array Of Clocks
 
-Playing with JavaScript and [p5.js](https://p5js.org/)... This clock is composed of 6 digits each with 6x4 clocks, making a total of 144. The clock is connected to the local time via the JavaScript API [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) and uses the [p5gui](https://github.com/bitcraftlab/p5.gui) library, which generates a fast graphical user interface (sliders, colour picker, etc.) for each of your variables.
+## [LINK TO DEMO ...](https://geniosainz.github.io/Array-Of-Clocks/)
+ 
+Playing with JavaScript and [p5.js](https://p5js.org/) ... This clock is composed of 6 digits each with 6x4 clocks, making a total of 144. The clock is connected to the local time via the JavaScript API [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) and uses the [p5gui](https://github.com/bitcraftlab/p5.gui) library, which generates a fast graphical user interface (sliders, colour picker, etc.) for each of your variables.
 
 
 
-![ArrayClock](docs/imgs/video1.gif)
+![ArrayClock](app/imgs/video1.gif)
 
 The application is optimised to work on screens with Width > Height. If Height > Width (phones typically in vertical mode) the application will create an alert telling the user to put the device in landscape mode. The arrays that make up the digits are centered on the screen with respect to their reference system, which is the upper left corner of each digit's bounding box *= (x0_i, y0)*.
 
 
-<img src="docs/imgs/img3.PNG"  width="100%">
-&nbsp
+<img src="app/imgs/img3.PNG"  width="100%">
 
 # Clock Sequences
 
@@ -113,7 +114,7 @@ let beta = [[45   , 225  ],  // 0
             [90   , 181  ]]; // 6
 ```
 
-<img src="docs/imgs/img2.PNG"  width="100%">
+<img src="app/imgs/img2.PNG"  width="100%">
 &nbsp;
 
 For each digit these positions are stored as an array *ni*. The array *N* stores all digits:
@@ -209,4 +210,4 @@ let theta3 = 90 - alpha*(date.getSeconds() - secSmooth*date.getMilliseconds()/10
 // 45 secs => 90-6*45  = 180º
 ```
 
-![ArrayClock](docs/imgs/video2.gif)
+![ArrayClock](app/imgs/video2.gif)
