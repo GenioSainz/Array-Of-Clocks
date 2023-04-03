@@ -6,12 +6,12 @@ Playing with JavaScript and [p5.js](https://p5js.org/) ... This clock is compose
 
 
 
-![ArrayClock](app/imgs/video1.gif)
+![ArrayClock](docs/imgs/video1.gif)
 
 The application is optimised to work on screens with Width > Height. If Height > Width (phones typically in vertical mode) the application will create an alert telling the user to put the device in landscape mode. The arrays that make up the digits are centered on the screen with respect to their reference system, which is the upper left corner of each digit's bounding box *= (x0_i, y0)*.
 
 
-<img src="app/imgs/img3.PNG"  width="100%">
+<img src="docs/imgs/img3.PNG"  width="100%">
 
 # Clock Sequences
 
@@ -114,7 +114,7 @@ let beta = [[45   , 225  ],  // 0
             [90   , 181  ]]; // 6
 ```
 
-<img src="app/imgs/img2.PNG"  width="100%">
+<img src="docs/imgs/img2.PNG"  width="100%">
 &nbsp;
 
 For each digit these positions are stored as an array *ni*. The array *N* stores all digits:
@@ -210,4 +210,4 @@ let theta3 = 90 - alpha*(date.getSeconds() - secSmooth*date.getMilliseconds()/10
 // 45 secs => 90-6*45  = 180º
 ```
 
-![ArrayClock](app/imgs/video2.gif)
+![ArrayClock](docs/imgs/video2.gif)
