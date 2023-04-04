@@ -1,9 +1,9 @@
 // gui params
 
 // diameter
-var d    = 50;
+var d    = 10;
 var dMin = 10;
-var dMax = 100;
+var dMax = 200;
 var dStep = 1;
 
 // secSmooth
@@ -34,7 +34,7 @@ let ratioDiameter     = 0.75;
 let handsLength;
 let guiLength         = 150;
 let guiHeight         = 81;
-let guiPadding        = 25;
+let guiPadding        = 15;
 let gui1,gui2,gui3,gui4,gui5;
 let gui1x,gui2x,gui3x,gui4x,gui5x;
 
@@ -195,7 +195,7 @@ function setup() {
     listenDiameterSlider();
     
 
-    // active ruler for measures
+    //active ruler for measures
     // let utils = new p5.Utils();
     //     utils.enableRuler();
 

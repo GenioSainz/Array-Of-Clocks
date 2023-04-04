@@ -280,20 +280,9 @@ function resizeArray(mode){
           d = floor(windowWidth / (6 * 4 + 3));
   };
 
-  // update hands length and upper left coordinate x of each digit bounding box
-  handsLength = 0.5*d*0.7;
-  xm          = windowWidth/2;
+  // upper left coordinate x of each digit bounding box
+  xm = windowWidth/2;
 
-  x0_1        = xm - (3*nCols+1)*d; // secs0
-  x0_2        = xm - (2*nCols+1)*d; // secs1
-  x0_3        = xm - (  nCols+1)*d;
-  x0_4        = xm -    nCols   *d; // mins0
-  x0_5        = xm                ; // mins1
-  x0_6        = xm +    nCols   *d;
-  x0_7        = xm + (  nCols+1)*d; // hours0
-  x0_8        = xm + (2*nCols+1)*d; // hours1
-  
-  
   // y0 based on screen height
   var H1 = guiPadding   + guiHeight + d/2
   var H2 = windowHeight - d/2;
@@ -306,16 +295,31 @@ function resizeArray(mode){
   y0 = ym-3*d;
 
   // adjust the diameter of the clocks to the height of the screen
-  var diff = windowHeight - (y0 + 6*d + d/2)
+  var diff = y0 - ( guiHeight + guiPadding + d/2);
   while(diff<=0) {
       
           d    = d - 1;
           y0   = ym-3*d;
-          diff = windowHeight - (y0 + 6*d + d/2);
+          diff = y0 - ( guiHeight + guiPadding + d/2 );
   };
+  
+  // update digits bounding box
+  x0_1 = xm - (3*nCols+1)*d; // secs0
+  x0_2 = xm - (2*nCols+1)*d; // secs1
+  x0_3 = xm - (  nCols+1)*d;
+  x0_4 = xm -    nCols   *d; // mins0
+  x0_5 = xm                ; // mins1
+  x0_6 = xm +    nCols   *d;
+  x0_7 = xm + (  nCols+1)*d; // hours0
+  x0_8 = xm + (2*nCols+1)*d; // hours1
+
+  // update hands length
+  handsLength = 0.5*d*0.7;
 
   // update diameter slider value end text
-  document.querySelector("#qs_1").value=d
+  document.querySelector("#qs_1").value = d;
+
+  // document.querySelector("#qs_1").max = d;
   document.querySelector("div.qs_label").innerHTML = `<b>d:</b> ${d}`;
   
 }
@@ -327,7 +331,7 @@ function listenDiameterSlider(){
   var slider = document.querySelector("#qs_1");
       
         slider.addEventListener('input',()=>{
-  
+
               resizeArray('slider')
           })
 };
